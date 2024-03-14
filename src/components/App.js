@@ -87,7 +87,7 @@ class App extends Component {
           Clear
         </button>
         <br />
-        <h3 data-testid="answer">{relationship}</h3>
+        <h3 data-testid="answer">{this.state.relationship}</h3>
       </div>
     );
   }
