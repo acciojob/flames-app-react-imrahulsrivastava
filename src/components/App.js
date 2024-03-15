@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import '../styles/App.css';
+import "../styles/App.css";
 
 class App extends Component {
   constructor(props) {
@@ -7,7 +7,7 @@ class App extends Component {
     this.state = {
       name1: "",
       name2: "",
-      relationship: ""
+      relationship: "",
     };
   }
 
@@ -53,7 +53,7 @@ class App extends Component {
     this.setState({
       name1: "",
       name2: "",
-      relationship: ""
+      relationship: "",
     });
   };
 
@@ -61,34 +61,38 @@ class App extends Component {
     const { name1, name2, relationship } = this.state;
 
     return (
-      <div id="main">
-        <input
-          type="text"
-          name="name1"
-          value={name1}
-          onChange={(e) => this.setState({ name1: e.target.value })}
-          placeholder="Enter first name"
-          data-testid="input1"
-        />
-        <br />
-        <input
-          type="text"
-          name="name2"
-          value={name2}
-          onChange={(e) => this.setState({ name2: e.target.value })}
-          placeholder="Enter second name"
-          data-testid="input2"
-        />
-        <br />
-        <button onClick={this.calculateRelationship} data-testid="calculate_relationship">
-          Calculate Relationship Future
-        </button>
-        <button onClick={this.clearForm} data-testid="clear">
-          Clear
-        </button>
-        <br />
-        <h3 data-testid="answer">{this.state.relationship}</h3>
-      </div>
+      <>
+        <div id="main">
+          <input
+            type="text"
+            name="name1"
+            value={name1}
+            onChange={(e) => this.setState({ name1: e.target.value })}
+            placeholder="Enter first name"
+            data-testid="input1"
+          />
+          <br />
+          <input
+            type="text"
+            name="name2"
+            value={name2}
+            onChange={(e) => this.setState({ name2: e.target.value })}
+            placeholder="Enter second name"
+            data-testid="input2"
+          />
+          <br />
+          <button
+            onClick={this.calculateRelationship}
+            data-testid="calculate_relationship"
+          >
+            Calculate Relationship Future
+          </button>
+          <button onClick={this.clearForm} data-testid="clear">
+            Clear
+          </button>
+        </div>
+        <h3 data-testid="answer">{relationship}</h3>
+      </>
     );
   }
 }
