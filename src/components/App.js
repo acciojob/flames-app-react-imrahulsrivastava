@@ -13,17 +13,33 @@ class App extends Component {
 
   calculateRelationship = () => {
     const { name1, name2 } = this.state;
-    const modifiedName1 = name1.split("");
-    const modifiedName2 = name2.split("");
 
-    for (const char of name1.toLowerCase()) {
-      if (modifiedName2.includes(char)) {
-        modifiedName2.splice(modifiedName2.indexOf(char), 1);
-        modifiedName1.splice(modifiedName1.indexOf(char), 1);
+    const nameA = name1.trim().toLowerCase().split("");
+    const nameB = name2.trim().toLowerCase().split("");
+
+    const charCount = {};
+
+    for (let char of nameA) {
+      charCount[char] = (charCount[char] || 0) + 1;
+    }
+
+    let modified = "";
+    for (const char of nameB) {
+      if (charCount[char] && charCount[char] > 0) {
+        charCount[char]--;
+      } else {
+        modified += char;
       }
     }
 
-    const result = (modifiedName1.length + modifiedName2.length) % 6;
+    for (let char in charCount) {
+      while (charCount[char] > 0) {
+        modified += char;
+        charCount[char]--;
+      }
+    }
+
+    const result = modified.length % 6;
 
     switch (result) {
       case 1:
