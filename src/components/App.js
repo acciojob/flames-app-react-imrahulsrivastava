@@ -32,7 +32,7 @@ class App extends Component {
       }
     }
 
-    for (let char in charCount) {
+    for (const char in charCount) {
       while (charCount[char] > 0) {
         modified += char;
         charCount[char]--;
