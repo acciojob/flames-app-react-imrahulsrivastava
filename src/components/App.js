@@ -17,6 +17,11 @@ class App extends Component {
     const nameA = name1.trim().toLowerCase().split("");
     const nameB = name2.trim().toLowerCase().split("");
 
+    if (nameA.length === 0 && nameB.length === 0) {
+      this.setState({ relationship: "Please enter valid input" });
+      return;
+    }
+
     const charCount = {};
 
     for (let char of nameA) {
@@ -39,7 +44,7 @@ class App extends Component {
       }
     }
 
-    const result = modified.length % 6;
+    const result = Math.floor(modified.length % 6);
 
     switch (result) {
       case 1:
@@ -57,11 +62,8 @@ class App extends Component {
       case 5:
         this.setState({ relationship: "Enemy" });
         break;
-      case 0:
-        this.setState({ relationship: "Siblings" });
-        break;
       default:
-        this.setState({ relationship: "Please enter valid input" });
+        this.setState({ relationship: "Siblings" });
     }
   };
 
