@@ -14,8 +14,8 @@ class App extends Component {
   calculateRelationship = () => {
     const { name1, name2 } = this.state;
 
-    const nameA = name1.trim().toLowerCase().split("");
-    const nameB = name2.trim().toLowerCase().split("");
+    const nameA = name1.trim().split("");
+    const nameB = name2.trim().split("");
 
     if (nameA.length === 0 && nameB.length === 0) {
       this.setState({ relationship: "Please enter valid input" });
